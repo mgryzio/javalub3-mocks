@@ -59,7 +59,7 @@ class PhotoCameraSpec extends Specification {
         camera.pressButton()
 
         then:
-        1 * card.write()
+        1 * card.write(sensor.read())
     }
 
 }

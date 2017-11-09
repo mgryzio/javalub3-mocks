@@ -1,5 +1,7 @@
 package com.demo.camera;
 
+import java.util.concurrent.TimeUnit;
+
 public class PhotoCamera implements WriteListener {
 
     ImageSensor sensor;
@@ -17,7 +19,7 @@ public class PhotoCamera implements WriteListener {
         on = true;
     }
 
-    public void turnOff() {
+    public void turnOff() {         // if tutaj musi być, jeżeli 
         sensor.turnOff();
         on = false;
     }
@@ -25,13 +27,12 @@ public class PhotoCamera implements WriteListener {
     public void pressButton() {
         if (on) {
             card.write(sensor.read());
-            
         } else {}
     }
 
     @Override
-    public void writeCompleted() {
-
+    public void writeCompleted() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
     }
 }
 
